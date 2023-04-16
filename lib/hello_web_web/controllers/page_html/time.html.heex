@@ -1,0 +1,10 @@
+<.simple_form for={@conn.params} phx-change="validate" phx-submit="save">
+  <.input value="Europe/Moscow" name="timezone" field={@conn.params["timezone"]} label="Timezone" />
+  <:actions>
+    <.button>Get time</.button>
+  </:actions>
+</.simple_form>
+
+<%= if @time do %>
+  <div>Your time is <%= @time %>!</div>
+<% end %>

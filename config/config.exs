@@ -10,6 +10,17 @@ import Config
 config :hello_web,
   ecto_repos: [HelloWeb.Repo]
 
+# Configure your database
+config :hello_web, HelloWeb.Repo,
+  username: System.get_env("PGUSER", "postgres"),
+  password: System.get_env("PGPASSWORD", "password"),
+  database: System.get_env("PGDATABASE", "hello_web_dev"),
+  hostname: System.get_env("PGHOST", "localhost"),
+  port: System.get_env("PGPORT"),
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
 # Configures the endpoint
 config :hello_web, HelloWebWeb.Endpoint,
   url: [host: "localhost"],

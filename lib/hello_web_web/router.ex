@@ -18,7 +18,7 @@ defmodule HelloWebWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/time", PageController, :get_time
+    get "/time", PageController, :time
     get "/forum", PageController, :forum
     post "/forum", PageController, :create_message
   end

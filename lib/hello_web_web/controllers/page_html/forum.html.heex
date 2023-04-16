@@ -1,0 +1,31 @@
+<.flash_group flash={@flash} />
+<h3>Users</h3>
+
+<div style="margin-top: 30px;">
+  <%= for user <- Enum.reverse(@users) do %>
+    <div style="border-width: 3px; border-color: black">
+      <p>Name: <%= user.nickname %></p>
+      <p>Posts counter: <%= user.counter %></p>
+    </div>
+  <% end %>
+</div>
+
+<h3 style="margin-top: 30px;">Forum</h3>
+<.simple_form for={@changeset} phx-change="validate" phx-submit="save" as={:post}>
+  <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
+  <.input value="" name="nickname" field={@changeset.data.nickname} label="Name" />
+  <.input value="" name="text" field={@changeset.data.text} label="Text" />
+  <:actions>
+    <.button>Post</.button>
+  </:actions>
+</.simple_form>
+
+<div style="margin-top: 30px;">
+  <%= for post <- Enum.reverse(@posts) do %>
+    <div style="border-width: 3px; border-color: black">
+      <p>AUTHOR: <%= post.nickname %></p>
+      <p>TEXT: <%= raw(post.text) %></p>
+      <p>date: <%= post.date %></p>
+    </div>
+  <% end %>
+</div>
