@@ -7,8 +7,6 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
     volumes: 
       - ./postgres-data:/var/lib/postgresql/data
 
@@ -19,7 +17,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db/hello_web_dev
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/hello_web_dev
       - SECRET_KEY_BASE=27Swe6KtEtmN37WyEYRjKWyxYULNtrxlkCEKur4qoV+Lwtk8lafsR16ifz1XBBYj
     command: bash -c "/app/bin/hello_web eval \"HelloWeb.Release.create_and_migrate()\" && /app/bin/hello_web start"
 
