@@ -24,7 +24,7 @@
   <%= for post <- Enum.reverse(@posts) do %>
     <div style="border-width: 3px; border-color: black">
       <p>AUTHOR: <%= post.nickname %></p>
-      <p>TEXT: <%= raw(post.text) %></p>
+      <p>TEXT: <%= post.text %></p>
       <p>date: <%= post.date %></p>
     </div>
   <% end %>
