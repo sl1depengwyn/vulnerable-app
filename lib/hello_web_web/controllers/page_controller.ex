@@ -38,8 +38,9 @@ defmodule HelloWebWeb.PageController do
   end
 
   def time(conn, %{"timezone" => timezone}) do
-    time = "TZ=#{timezone} date" |> String.to_charlist() |> :os.cmd() |> to_string()
-    render(conn, :time, time: time)
+    {time, _} = "date" |> System.cmd([], env: [{"TZ", timezone}])
+
+    render(conn, :time, time: time |> to_string())
   end
 
   def time(conn, _params) do
