@@ -36,7 +36,7 @@ defmodule HelloWeb.Release do
   end
 
   def create() do
-    case HelloWeb.Repo.__adapter__.storage_up(HelloWeb.Repo.config) do
+    case HelloWeb.Repo.__adapter__().storage_up(HelloWeb.Repo.config()) do
       :ok -> :ok
       {:error, :already_up} -> :ok
       {:error, term} -> {:error, term}
